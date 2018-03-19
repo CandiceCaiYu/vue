@@ -1,27 +1,13 @@
 <template>
   <div id="app">
     <div v-if="!show" class="app-begin">
-      <ul class="feature-list">
-        <li class="feature-item" @click="addFeature1">
-          <h3>渐进式框架</h3>
-           <transition name="fade">        
-              <p v-if="feature1">
-                {{feature1}}
-                </p>
-           </transition>
-        </li>
-        <li class="feature-item" @click="addFeature2">
-          <h3>SPA</h3>
-          <transition name="bounce">
-          <p v-if="feature2">{{feature2}}</p>
-          </transition>
-          
-        </li>
-        <li class="feature-item" @click="addFeature3">
-          <h3>单一数据流</h3>
-          <p>{{feature3}}</p>
-        </li>
-      </ul>
+      <div class="div">
+        <h2>渐进式框架</h2>
+        <h5>Progressive</h5>
+        <div class="app-img">
+          <img src="./assets/framework-ring.png" alt="">
+        </div>
+      </div>
       <button class="enter-home" @click="enterHome">进入</button>
     </div>
     <router-view v-show="show"/>
@@ -77,7 +63,6 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 .app-begin {
   position: absolute;
@@ -87,6 +72,15 @@ export default {
   width: 100%;
   height: 100%;
   background: #d2b0b0;
+  overflow: hidden;
+}
+.app-img {
+  width: 540px;
+  height: 500px;
+  margin: 60px auto 10px;
+}
+.app-img img {
+  max-width: 532px;
 }
 .feature-list {
   display: flex;
@@ -136,6 +130,8 @@ a {
   text-decoration: none;
   color: #fff;
 }
+/* body,
+h1, */
 p {
   margin: 0;
   padding: 0;
