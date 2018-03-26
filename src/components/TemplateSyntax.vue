@@ -24,6 +24,9 @@
       <li class="list"><p>v-if/v-for优先级: </p></li>
 
       <hr />
+      <li class="list" v-on:click.prevent="add"><p>事件v-on: </p> <div class="content" >{{count}}</div></li>
+      
+      <hr />
       <li class="list"><p>表单相关: </p> <div class="content">
           <p>{{inputMsg}}</p>
           <!-- 修饰符lazy, number, trim -->
@@ -37,28 +40,29 @@
           <label for="banana">banana:</label> -->
         </div></li>
       <hr />
-      <!-- prevent(重载页面), stop(阻止点击事件继续传播), once, self(event.target), capture -->
-      <!-- 
-       v-on:click.prevent.self 会阻止所有的点击，
-       v-on:click.self.prevent 只会阻止对元素自身的点击 -->
-      <li class="list" v-on:click.prevent="add"><p>事件v-on: </p> <div class="content" >{{count}}</div></li>
       
-      <hr />
-      <li class="list"><p>计算属性: </p> <div class="content" >{{arr}}</div></li>
+      
+      <li class="list"><p>计算属性: </p> <div class="content" >{{sortArr}}</div></li>
       <li class="list"><p>侦听器: </p> <div class="content" >{{fullName}}</div></li>
 
       <hr />
+      
       <!-- :style vue自动加前缀 transition -->
       <li class="list"><p :class="changeStyle">class/style:</p><div class="content" :style="{color: initColor, fontSize: '20px'}">类和样式绑定</div></li>
+      
       <hr />
-      <!-- Vue 包含一组观察数组的变异方法，所以它们也将会触发视图更新 pop, push, shift, unshift, sort, reverse, splice -->
-      <!-- 非变异方法，不改变原始数组，返回新数组filter, concat, slice -->
-      <!-- 不能检测： 索引添加，修改length -->
+
       <!-- vm.$set(arr,index, newValue), splice(index, 1, newValue) -->
       <li class="list"><p :class="changeStyle">数组/对象:  </p><div class="content"><button @click="addItem">添加</button></div></li>
+      <li class="list"><p>过渡样式: </p> 
+      <transition name="fade">
+        <div class="content" v-if="show">展示</div>
+      </transition>
+      </li>
+
       <hr />
-      <!-- v-keyup.enter,delete,right... -->
-      <!-- 系统按键ctrl, meta, alt, shift -->
+
+
       <!-- .exact, 精确系统组合键 -->
       <!-- 自定义Vue.config.keyCodes.f1 = 112 -->
       <li class="list"><p>按键修饰符: </p> <div class="content"><input type="text" @keyup="useKeys"></div></li>
@@ -66,7 +70,7 @@
   </div>
 </template>
 <script>
-export default {
+ export default {
   name: "TemplateSyntax",
   data: function() {
     return {
@@ -100,7 +104,7 @@ export default {
   // },
   computed: {
     sortArr: function() {
-      this.arr.sort(function(a, b) {
+      return this.arr.sort(function(a, b) {
         return a - b;
       });
     },
@@ -154,7 +158,16 @@ export default {
 .template-syntax-insert-value .content {
   margin-left: 10px;
 }
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+
 .textDanger {
+  font-size: 20px;
   color: #f00;
 }
 .textInfo {

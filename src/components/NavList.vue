@@ -2,7 +2,7 @@
  <div class="nav-list">
   <h2>分类</h2>
   <ul class="nav-list-ul">
-  <li class="nav-list-item"><router-link :to="{name: 'TemplateSyntax'}">模板语法</router-link></li>
+  <li class="nav-list-item"><router-link :to="{name: 'TemplateSyntax'}">核心</router-link></li>
   <!-- <li class="nav-list-item"><router-link :to="{name: 'AboutComponent'}">组件</router-link></li> -->
   <li class="nav-list-item"><router-link :to="{name: 'AboutRouter'}">路由</router-link></li>
   <li class="nav-list-item"><router-link :to="{name: 'AboutRedux'}">状态管理</router-link></li>

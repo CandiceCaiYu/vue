@@ -12,7 +12,6 @@
 </template>
 <script>
 import NavList from "./NavList";
-import Content from "./Content";
 import ContentGuide from "./ContentGuide";
 export default {
   name: "Home",
