@@ -76,11 +76,11 @@ export default {
 }
 .app-img {
   width: 540px;
-  height: 500px;
+  height: 410px;
   margin: 60px auto 10px;
 }
 .app-img img {
-  max-width: 532px;
+  max-width: 400px;
 }
 .feature-list {
   display: flex;
